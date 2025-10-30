@@ -65,10 +65,12 @@
       CgfyBUuk1nTQJxpJK1F4Ds1DceEuyDq1B46Cg2tPpump
     </p>
     <p class="mt-4 text-gray-600 dark:text-gray-400">Easily add TAP to your favorite wallet.</p>
+
+    <!-- Add to Wallet Buttons -->
     <div class="flex flex-wrap justify-center gap-4 mt-6">
-      <a href="#" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg">Add to OKX Wallet</a>
-      <a href="#" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-lg">Add to Phantom</a>
-      <a href="#" class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg">Add to MetaMask</a>
+      <button onclick="addToOKX()" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg">Add to OKX Wallet</button>
+      <button onclick="addToPhantom()" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-lg">Add to Phantom</button>
+      <button onclick="addToMetaMask()" class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg">Add to MetaMask</button>
     </div>
   </section>
 
@@ -100,7 +102,7 @@
         <li>3️⃣ Search for <strong>TAP</strong> using the contract address:</li>
         <p class="font-mono bg-white dark:bg-gray-900 px-4 py-2 rounded-lg text-sm inline-block shadow">CgfyBUuk1nTQJxpJK1F4Ds1DceEuyDq1B46Cg2tPpump</p>
         <li>4️⃣ Choose the amount you want and confirm the purchase.</li>
-        <li>5️⃣ Add TAP to your wallet manually using the same contract address.</li>
+        <li>5️⃣ Add TAP to your wallet manually using the same contract address if needed.</li>
       </ol>
     </div>
   </section>
@@ -140,12 +142,29 @@
     ⚠️ This is not financial advice. Cryptocurrency investments carry risk. Always DYOR.
   </footer>
 
+  <!-- Wallet Scripts -->
   <script>
-    // Theme toggle
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark')
-      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-    })
-  </script>
-</body>
-</html>
+    const tokenAddress = "CgfyBUuk1nTQJxpJK1F4Ds1DceEuyDq1B46Cg2tPpump";
+    const tokenSymbol = "TAP";
+    const tokenDecimals = 9;
+    const tokenImage = "https://e.top4top.io/p_35276pm4o0.png";
+
+    async function addToMetaMask() {
+      if (window.ethereum) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_watchAsset',
+            params: {
+              type: 'ERC20',
+              options: { address: tokenAddress, symbol: tokenSymbol, decimals: tokenDecimals, image: tokenImage },
+            },
+          });
+          alert("TAP added to MetaMask!");
+        } catch (err) { console.error(err); }
+      } else { alert("MetaMask not detected!"); }
+    }
+
+    async function addToOKX() {
+      if (window.okxwallet) {
+        try {
+          await window.okxwallet.request({
