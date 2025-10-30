@@ -86,7 +86,7 @@
     </div>
   </section>
 
-  <!-- Live Chart Section (Larger & Centered) -->
+  <!-- Live Chart Section -->
   <section class="py-12 px-6 text-center bg-gray-50 dark:bg-gray-900">
     <h3 class="text-3xl font-bold mb-4 text-blue-700 dark:text-blue-300">📊 TAP Live Chart</h3>
     <p class="text-gray-600 dark:text-gray-400 mb-6">
@@ -139,4 +139,64 @@
       <a href="https://t.me/GlobalAIPowerofficial" target="_blank" class="bg-sky-600 hover:bg-sky-700 text-white px-5 py-2 rounded-lg">Telegram Group</a>
       <a href="https://t.me/tapsidra" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded-lg">Official Channel</a>
       <a href="https://x.com/TAPsidrachain?s=09" target="_blank" class="bg-black hover:bg-gray-800 text-white px-5 py-2 rounded-lg">Twitter / X</a>
-      <a href="https://www.tapwr.com" target="_blank" class="bg-gray-200 dark:bg-gray-700
+      <a href="https://www.tapwr.com" target="_blank" class="bg-gray-200 dark:bg-gray-700 hover:opacity-80 text-gray-900 dark:text-gray-100 px-5 py-2 rounded-lg">Website</a>
+    </div>
+  </section>
+
+  <!-- Floating Buy Button with Animated Gradient -->
+  <a href="https://pump.fun" target="_blank" 
+     class="fixed bottom-5 right-5 text-white font-semibold px-6 py-3 rounded-full shadow-lg text-lg z-50 transition-all duration-200 hover:scale-105 pulse-glow gradient-btn">
+    🚀 Buy TAP
+  </a>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700 mt-10">
+    ⚠️ This is not financial advice. Cryptocurrency investments carry risk. Always DYOR.
+  </footer>
+
+  <!-- Wallet Scripts -->
+  <script>
+    const tokenAddress = "CgfyBUuk1nTQJxpJK1F4Ds1DceEuyDq1B46Cg2tPpump";
+    const tokenSymbol = "TAP";
+    const tokenDecimals = 9;
+    const tokenImage = "https://e.top4top.io/p_35276pm4o0.png";
+
+    async function addToMetaMask() {
+      if (window.ethereum) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_watchAsset',
+            params: { type: 'ERC20', options: { address: tokenAddress, symbol: tokenSymbol, decimals: tokenDecimals, image: tokenImage } }
+          });
+          alert("TAP added to MetaMask!");
+        } catch(e){console.error(e);}
+      } else alert("MetaMask not detected!");
+    }
+
+    async function addToOKX() {
+      if (window.okxwallet) {
+        try {
+          await window.okxwallet.request({
+            method: 'wallet_watchAsset',
+            params: { type: 'ERC20', options: { address: tokenAddress, symbol: tokenSymbol, decimals: tokenDecimals, image: tokenImage } }
+          });
+          alert("TAP added to OKX Wallet!");
+        } catch(e){console.error(e);}
+      } else alert("OKX Wallet not detected!");
+    }
+
+    async function addToPhantom() {
+      if (window.solana && window.solana.isPhantom) {
+        try { await window.solana.connect(); alert("Please add TAP manually in Phantom wallet using the contract address."); }
+        catch(e){console.error(e);}
+      } else alert("Phantom wallet not detected!");
+    }
+
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    });
+  </script>
+</body>
+</html>
