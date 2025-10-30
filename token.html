@@ -154,17 +154,37 @@
         try {
           await window.ethereum.request({
             method: 'wallet_watchAsset',
-            params: {
-              type: 'ERC20',
-              options: { address: tokenAddress, symbol: tokenSymbol, decimals: tokenDecimals, image: tokenImage },
-            },
+            params: { type: 'ERC20', options: { address: tokenAddress, symbol: tokenSymbol, decimals: tokenDecimals, image: tokenImage } }
           });
           alert("TAP added to MetaMask!");
-        } catch (err) { console.error(err); }
-      } else { alert("MetaMask not detected!"); }
+        } catch(e){console.error(e);}
+      } else alert("MetaMask not detected!");
     }
 
     async function addToOKX() {
       if (window.okxwallet) {
         try {
           await window.okxwallet.request({
+            method: 'wallet_watchAsset',
+            params: { type: 'ERC20', options: { address: tokenAddress, symbol: tokenSymbol, decimals: tokenDecimals, image: tokenImage } }
+          });
+          alert("TAP added to OKX Wallet!");
+        } catch(e){console.error(e);}
+      } else alert("OKX Wallet not detected!");
+    }
+
+    async function addToPhantom() {
+      if (window.solana && window.solana.isPhantom) {
+        try { await window.solana.connect(); alert("Please add TAP manually in Phantom wallet using the contract address."); }
+        catch(e){console.error(e);}
+      } else alert("Phantom wallet not detected!");
+    }
+
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    });
+  </script>
+</body>
+</html>
