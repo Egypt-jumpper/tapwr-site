@@ -11,7 +11,9 @@
       0%, 100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3); }
       50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.5); }
     }
-    .pulse-glow { animation: pulseGlow 2s infinite; }
+    .pulse-glow {
+      animation: pulseGlow 2s infinite;
+    }
 
     /* Animated gradient background for Buy TAP button */
     @keyframes gradientBG {
@@ -21,34 +23,40 @@
       75% { background-color: #06b6d4; }
       100% { background-color: #3b82f6; }
     }
-    .gradient-btn { animation: gradientBG 5s infinite linear; }
-
-    /* Scroll animation */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
+    .gradient-btn {
+      animation: gradientBG 5s infinite linear;
     }
-    .fade-up.show { opacity: 1; transform: translateY(0); }
-
-    body { background: linear-gradient(135deg, #1e3a8a, #6b7280); } /* أزرق غامق + رمادي */
   </style>
+  <script>
+    // Auto theme switch
+    if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  </script>
 </head>
-<body class="text-gray-100 font-sans">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition duration-300 font-sans">
 
   <!-- Header -->
-  <header class="flex justify-between items-center px-6 py-4 border-b border-gray-700 bg-transparent">
+  <header class="flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-blue-100 dark:bg-gray-800">
     <div class="flex items-center space-x-3">
-      <img src="https://e.top4top.io/p_35276pm4o0.png" alt="TAP Logo" class="w-6 h-6 rounded-full border-2 border-blue-500">
-      <h1 class="text-2xl font-bold text-blue-300">TAP Token</h1>
+      <img src="https://e.top4top.io/p_35276pm4o0.png" alt="TAP Logo" class="w-12 h-12 rounded-full border-2 border-blue-500">
+      <h1 class="text-2xl font-bold text-blue-800 dark:text-blue-300">TAP Token</h1>
     </div>
-    <button id="themeToggle" class="bg-blue-700 px-3 py-1 rounded-lg text-sm font-semibold hover:opacity-80 text-white">Toggle Theme</button>
+    <button
+      id="themeToggle"
+      class="bg-blue-200 dark:bg-blue-700 px-3 py-1 rounded-lg text-sm font-semibold hover:opacity-80 text-blue-900 dark:text-white"
+    >Toggle Theme</button>
   </header>
 
   <!-- Hero Section -->
-  <section class="text-center py-14 px-4 fade-up">
-    <h2 class="text-4xl md:text-5xl font-extrabold text-blue-300 mb-4">Powering the Future of Freelancing</h2>
-    <p class="max-w-2xl mx-auto text-gray-200">
+  <section class="text-center py-14 px-4 bg-white dark:bg-gray-900">
+    <h2 class="text-3xl md:text-5xl font-extrabold text-blue-700 dark:text-blue-300 mb-4">Powering the Future of Freelancing</h2>
+    <p class="max-w-2xl mx-auto text-gray-700 dark:text-gray-300">
       <strong>TAP</strong> is the official utility token fueling the <strong>TaskMorph AI ecosystem</strong> —
       a next-gen platform that automates, matches, and empowers freelancers with AI.
     </p>
@@ -56,20 +64,21 @@
       <a href="https://pump.fun" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md">
         Buy on pump.fun
       </a>
-      <a href="https://www.tapwr.com" target="_blank" class="bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-lg">
+      <a href="https://www.tapwr.com" target="_blank" class="bg-gray-200 dark:bg-gray-700 hover:opacity-80 text-gray-900 dark:text-gray-100 font-semibold px-6 py-3 rounded-lg">
         Visit Website
       </a>
     </div>
   </section>
 
   <!-- Contract Section -->
-  <section class="bg-gray-800 py-10 px-6 text-center fade-up">
-    <h3 class="text-2xl font-bold mb-3 text-blue-300">📜 Contract Address</h3>
-    <p class="font-mono text-sm md:text-base select-all bg-gray-900 px-4 py-2 rounded-lg inline-block shadow border-2 border-blue-500">
+  <section class="bg-gray-100 dark:bg-gray-800 py-10 px-6 text-center">
+    <h3 class="text-2xl font-bold mb-3 text-blue-700 dark:text-blue-300">📜 Contract Address</h3>
+    <p class="font-mono text-sm md:text-base select-all bg-white dark:bg-gray-900 px-4 py-2 rounded-lg inline-block shadow border-2 border-blue-300">
       CgfyBUuk1nTQJxpJK1F4Ds1DceEuyDq1B46Cg2tPpump
     </p>
-    <p class="mt-4 text-gray-300">Easily add TAP to your favorite wallet.</p>
+    <p class="mt-4 text-gray-600 dark:text-gray-400">Easily add TAP to your favorite wallet.</p>
 
+    <!-- Add to Wallet Buttons -->
     <div class="flex flex-wrap justify-center gap-4 mt-6">
       <button onclick="addToOKX()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg">Add to OKX Wallet</button>
       <button onclick="addToPhantom()" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-lg">Add to Phantom</button>
@@ -78,28 +87,32 @@
   </section>
 
   <!-- Live Chart Section -->
-  <section class="py-12 px-6 text-center fade-up">
-    <h3 class="text-3xl font-bold mb-4 text-blue-300">📊 TAP Live Chart</h3>
-    <p class="text-gray-300 mb-6">Track TAP’s price and performance in real time.</p>
+  <section class="py-12 px-6 text-center bg-gray-50 dark:bg-gray-900">
+    <h3 class="text-3xl font-bold mb-4 text-blue-700 dark:text-blue-300">📊 TAP Live Chart</h3>
+    <p class="text-gray-600 dark:text-gray-400 mb-6">
+      Track TAP’s price and performance in real time.
+    </p>
     <div class="flex justify-center">
       <iframe 
         src="https://dexscreener.com/solana/eyd9wbueybjma1b7rw4228n8frzwmgiieghpr49gdr7"
-        class="w-full max-w-[1200px] h-[900px] rounded-xl shadow-2xl border-4 border-blue-500"
+        class="w-full max-w-8xl h-[1000px] rounded-xl shadow-2xl border-4 border-blue-500 dark:border-blue-400"
         allowfullscreen>
       </iframe>
     </div>
   </section>
 
   <!-- How to Buy Section -->
-  <section class="py-12 px-6 fade-up">
+  <section class="bg-gray-100 dark:bg-gray-800 py-12 px-6">
     <div class="max-w-4xl mx-auto text-center">
-      <h3 class="text-2xl font-bold mb-4 text-blue-300">🛒 How to Buy TAP</h3>
-      <p class="text-gray-200 mb-8">Follow these quick steps to purchase and add TAP to your wallet:</p>
-      <ol class="text-left space-y-4 max-w-2xl mx-auto text-gray-200">
-        <li>1️⃣ Visit <a href="https://pump.fun" target="_blank" class="text-blue-300 hover:underline">pump.fun</a>.</li>
+      <h3 class="text-2xl font-bold mb-4 text-blue-700 dark:text-blue-300">🛒 How to Buy TAP</h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-8">
+        Follow these quick steps to purchase and add TAP to your wallet:
+      </p>
+      <ol class="text-left space-y-4 max-w-2xl mx-auto text-gray-700 dark:text-gray-300">
+        <li>1️⃣ Visit <a href="https://pump.fun" target="_blank" class="text-blue-500 hover:underline">pump.fun</a>.</li>
         <li>2️⃣ Connect your **OKX Web3**, **Phantom**, or **MetaMask** wallet.</li>
         <li>3️⃣ Search for <strong>TAP</strong> using the contract address:</li>
-        <p class="font-mono bg-gray-900 px-4 py-2 rounded-lg text-sm inline-block shadow border-2 border-blue-500">CgfyBUuk1nTQJxpJK1F4Ds1DceEuyDq1B46Cg2tPpump</p>
+        <p class="font-mono bg-white dark:bg-gray-900 px-4 py-2 rounded-lg text-sm inline-block shadow border-2 border-blue-300">CgfyBUuk1nTQJxpJK1F4Ds1DceEuyDq1B46Cg2tPpump</p>
         <li>4️⃣ Choose the amount you want and confirm the purchase.</li>
         <li>5️⃣ Add TAP to your wallet manually using the same contract address if needed.</li>
       </ol>
@@ -107,9 +120,9 @@
   </section>
 
   <!-- About Section -->
-  <section class="py-12 px-6 max-w-4xl mx-auto text-center fade-up">
-    <h3 class="text-2xl font-bold mb-4 text-blue-300">🌐 About TaskMorph AI</h3>
-    <p class="text-gray-200 leading-relaxed">
+  <section class="py-12 px-6 max-w-4xl mx-auto text-center">
+    <h3 class="text-2xl font-bold mb-4 text-blue-700 dark:text-blue-300">🌐 About TaskMorph AI</h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
       TaskMorph AI transforms freelancing with intelligent automation.
       The platform analyzes projects, splits them into smart tasks,
       auto-matches freelancers with clients, and assists both during execution.
@@ -119,25 +132,25 @@
   </section>
 
   <!-- Community Section -->
-  <section class="py-10 text-center fade-up">
-    <h3 class="text-2xl font-bold mb-3 text-blue-300">🔥 Join Our Community</h3>
-    <p class="text-gray-300 mb-6">Stay updated with airdrops, giveaways, and AMAs!</p>
+  <section class="bg-gray-100 dark:bg-gray-800 py-10 text-center">
+    <h3 class="text-2xl font-bold mb-3 text-blue-700 dark:text-blue-300">🔥 Join Our Community</h3>
+    <p class="text-gray-600 dark:text-gray-400 mb-6">Stay updated with airdrops, giveaways, and AMAs!</p>
     <div class="flex justify-center flex-wrap gap-4">
       <a href="https://t.me/GlobalAIPowerofficial" target="_blank" class="bg-sky-600 hover:bg-sky-700 text-white px-5 py-2 rounded-lg">Telegram Group</a>
       <a href="https://t.me/tapsidra" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded-lg">Official Channel</a>
       <a href="https://x.com/TAPsidrachain?s=09" target="_blank" class="bg-black hover:bg-gray-800 text-white px-5 py-2 rounded-lg">Twitter / X</a>
-      <a href="https://www.tapwr.com" target="_blank" class="bg-gray-700 hover:bg-gray-800 text-white px-5 py-2 rounded-lg">Website</a>
+      <a href="https://www.tapwr.com" target="_blank" class="bg-gray-200 dark:bg-gray-700 hover:opacity-80 text-gray-900 dark:text-gray-100 px-5 py-2 rounded-lg">Website</a>
     </div>
   </section>
 
-  <!-- Floating Buy Button -->
+  <!-- Floating Buy Button with Animated Gradient -->
   <a href="https://pump.fun" target="_blank" 
      class="fixed bottom-5 right-5 text-white font-semibold px-6 py-3 rounded-full shadow-lg text-lg z-50 transition-all duration-200 hover:scale-105 pulse-glow gradient-btn">
     🚀 Buy TAP
   </a>
 
   <!-- Footer -->
-  <footer class="py-6 text-center text-sm text-gray-400 border-t border-gray-700 mt-10 fade-up">
+  <footer class="py-6 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700 mt-10">
     ⚠️ This is not financial advice. Cryptocurrency investments carry risk. Always DYOR.
   </footer>
 
@@ -182,15 +195,8 @@
     // Theme toggle
     document.getElementById('themeToggle').addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
     });
-
-    // Scroll animation
-    const faders = document.querySelectorAll('.fade-up');
-    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-      entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('show'); appearOnScroll.unobserve(entry.target); } });
-    }, appearOptions);
-    faders.forEach(fader => { appearOnScroll.observe(fader); });
   </script>
 </body>
 </html>
