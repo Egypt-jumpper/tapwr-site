@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TAP Roadmap | TaskMorph AI Power</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0a1a33, #1c2b3d, #2f3f52);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Timeline Layout */
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      margin: 5rem auto;
+      width: 90%;
+      max-width: 1200px;
+      flex-wrap: nowrap;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      width: 90%;
+      height: 4px;
+      background: rgba(255,255,255,0.2);
+      z-index: 1;
+      transform: translateY(-50%);
+    }
+
+    .phase {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      width: 18%;
+      transition: transform 0.4s ease;
+    }
+
+    .phase:hover {
+      transform: translateY(-10px);
+    }
+
+    .phase-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #4f7ecf, #89a7e0);
+      box-shadow: 0 0 25px 8px rgba(79,126,207,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 1rem auto;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .phase-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .phase-desc {
+      font-size: 0.95rem;
+      color: #cfd8e3;
+      margin-top: 0.5rem;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive for Mobile */
+    @media (max-width: 900px) {
+      .timeline {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .timeline::before {
+        top: 0;
+        left: 40px;
+        width: 4px;
+        height: 100%;
+      }
+
+      .phase {
+        width: 100%;
+        text-align: left;
+        margin-left: 80px;
+        margin-bottom: 3rem;
+      }
+
+      .phase-circle {
+        position: absolute;
+        left: 0;
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="flex justify-between items-center px-8 py-4 bg-[#0a1a33]/60 backdrop-blur-md border-b border-gray-700">
+    <div class="flex items-center space-x-3">
+      <img src="https://e.top4top.io/p_35276pm4o0.png" alt="TAP Logo" class="w-10 h-10 rounded-full">
+      <h1 class="text-xl font-semibold">TaskMorph AI Power</h1>
+    </div>
+    <a href="index.html" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition">⬅ Back to Home</a>
+  </header>
+
+  <!-- Title -->
+  <section class="text-center mt-12 fade-in">
+    <h2 class="text-4xl font-bold mb-3">🚀 TaskMorph AI Power Roadmap</h2>
+    <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+      Explore our journey and future vision for TAP Token and the TaskMorph AI ecosystem.
+    </p>
+  </section>
+
+  <!-- Horizontal (or vertical on mobile) Roadmap -->
+  <section class="timeline fade-in mt-16 relative">
+    <div class="phase">
+      <div class="phase-circle">1</div>
+      <div class="phase-title">Launch & Foundation</div>
+      <div class="phase-desc">
+        Token creation on Solana, website launch, and initial marketing to build our early community.
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-circle">2</div>
+      <div class="phase-title">AI Integration</div>
+      <div class="phase-desc">
+        Integrating AI task automation and smart project analysis into TaskMorph AI platform.
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-circle">3</div>
+      <div class="phase-title">Expansion & Partnerships</div>
+      <div class="phase-desc">
+        Establishing collaborations with top freelancing and AI platforms worldwide.
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-circle">4</div>
+      <div class="phase-title">TAP Utility & Governance</div>
+      <div class="phase-desc">
+        Enabling TAP for payments, staking, and governance within the TaskMorph ecosystem.
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-circle">5</div>
+      <div class="phase-title">Metaverse & Future</div>
+      <div class="phase-desc">
+        Launching TAP Metaverse for AI-driven freelancing and next-gen digital workspaces.
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    © 2025 TaskMorph AI Power | All Rights Reserved
+  </footer>
+</body>
+</html>
