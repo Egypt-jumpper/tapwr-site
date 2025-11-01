@@ -93,6 +93,7 @@
       .timeline {
         flex-direction: column;
         align-items: flex-start;
+        width: 90%;
       }
 
       .timeline::before {
@@ -113,6 +114,15 @@
         position: absolute;
         left: 0;
         transform: translateX(-50%);
+      }
+
+      .phase-title {
+        font-size: 1.1rem;
+      }
+
+      .phase-desc {
+        font-size: 0.95rem;
+        max-width: 90%;
       }
     }
   </style>
@@ -135,13 +145,13 @@
     </p>
   </section>
 
-  <!-- Horizontal (or vertical on mobile) Roadmap -->
+  <!-- Horizontal / Vertical Roadmap -->
   <section class="timeline fade-in mt-16 relative">
     <div class="phase">
       <div class="phase-circle">1</div>
       <div class="phase-title">Launch & Foundation</div>
       <div class="phase-desc">
-        Token creation on Solana, website launch, and initial marketing to build our early community.
+        Token creation on SidraChain and Solana, website launch, and initial marketing to build our early community.
       </div>
     </div>
 
@@ -177,6 +187,13 @@
       </div>
     </div>
   </section>
+
+  <!-- Whitepaper Button -->
+  <div class="text-center my-12">
+    <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg shadow-lg transition">
+      📄 View Whitepaper
+    </a>
+  </div>
 
   <!-- Footer -->
   <footer class="text-center py-8 text-gray-400 text-sm">
